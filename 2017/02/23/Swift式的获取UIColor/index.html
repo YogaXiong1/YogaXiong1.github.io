@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      Swift式的获取UIColor | YogaXiong&#39;s Blog 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="YogaXiong">
+    
+    
+
+    <meta name="description" content="开发中用到的颜色一般都是RGB或十六进制，我们可以利用Swift的扩展，更加优雅得获取到颜色。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift式的获取UIColor | YogaXiong's Blog">
+<meta property="og:url" content="http://yoursite.com/2017/02/23/Swift式的获取UIColor/index.html">
+<meta property="og:site_name" content="YogaXiong's Blog">
+<meta property="og:description" content="开发中用到的颜色一般都是RGB或十六进制，我们可以利用Swift的扩展，更加优雅得获取到颜色。">
+<meta property="og:image" content="http://oltmle8np.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-02-24%20%E4%B8%8A%E5%8D%8810.42.16.png">
+<meta property="og:updated_time" content="2017-02-24T02:44:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift式的获取UIColor | YogaXiong's Blog">
+<meta name="twitter:description" content="开发中用到的颜色一般都是RGB或十六进制，我们可以利用Swift的扩展，更加优雅得获取到颜色。">
+<meta name="twitter:image" content="http://oltmle8np.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-02-24%20%E4%B8%8A%E5%8D%8810.42.16.png">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">YogaXiong&#39;s Blog</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          抽象世界
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/YogaXiong1" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">Swift式的获取UIColor</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-02-23" class="post-meta__date date">2017-02-23</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/iOS-Tips/">iOS Tips</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>开发中用到的颜色一般都是RGB或十六进制，我们可以利用Swift的扩展，更加优雅得获取到颜色。<br><a id="more"></a><br>直接上代码。</p>
+<ul>
+<li><p>扩展Int</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Int</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> color: <span class="type">UIColor</span> &#123;</div><div class="line">        <span class="keyword">let</span> r = <span class="type">CGFloat</span>((<span class="keyword">self</span> &amp; <span class="number">0xFF0000</span>) &gt;&gt; <span class="number">16</span>)/<span class="number">255.0</span></div><div class="line">        <span class="keyword">let</span> g = <span class="type">CGFloat</span>((<span class="keyword">self</span> &amp; <span class="number">0xFF00</span>) &gt;&gt; <span class="number">8</span>)/<span class="number">255.0</span></div><div class="line">        <span class="keyword">let</span> b = <span class="type">CGFloat</span>(<span class="keyword">self</span> &amp; <span class="number">0xFF</span>)/<span class="number">255.0</span></div><div class="line">        <span class="keyword">return</span> <span class="type">UIColor</span>(red: r, green: g, blue: b, alpha: <span class="number">1.0</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>扩展Collection</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Collection</span> <span class="title">where</span> <span class="title">Iterator</span>.<span class="title">Element</span> == <span class="title">Int</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> color: <span class="type">UIColor</span> &#123;</div><div class="line">        <span class="keyword">guard</span> <span class="keyword">self</span>.<span class="built_in">count</span> == <span class="number">3</span> <span class="keyword">else</span> &#123; <span class="built_in">fatalError</span>(<span class="string">"need 3 elements"</span>) &#125;</div><div class="line">        <span class="keyword">let</span> r = <span class="type">CGFloat</span>(<span class="keyword">self</span>[startIndex])/<span class="number">255.0</span></div><div class="line">        <span class="keyword">let</span> g = <span class="type">CGFloat</span>(<span class="keyword">self</span>[index(startIndex, offsetBy: <span class="number">1</span>)])/<span class="number">255.0</span></div><div class="line">        <span class="keyword">let</span> b = <span class="type">CGFloat</span>(<span class="keyword">self</span>[index(startIndex, offsetBy: <span class="number">2</span>)])/<span class="number">255.0</span></div><div class="line">        <span class="keyword">return</span> <span class="type">UIColor</span>(red: r, green: g, blue: b, alpha: <span class="number">1.0</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>看看效果<br><img src="http://oltmle8np.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-02-24%20%E4%B8%8A%E5%8D%8810.42.16.png" alt=""></p>
+
+  </section>
+
+  
+  
+</article>
+
+
+            <footer class="footer">
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<span class="footer__copyright">©2017 YogaXiong</span>
+	<!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_site_pv"></span>次</span> -->
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
