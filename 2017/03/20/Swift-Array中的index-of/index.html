@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      Swift Array中的index(of:) | YogaXiong&#39;s Blog 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="YogaXiong">
+    
+    
+
+    <meta name="description" content="先定义一个类1234567891011121314151617class Sports &amp;#123;    let id: Int    let name: String        init(id: Int, name: String) &amp;#123;        self.id = id        self.name = name    &amp;#125;&amp;#125;let running =">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift Array中的index(of:) | YogaXiong's Blog">
+<meta property="og:url" content="http://yoursite.com/2017/03/20/Swift-Array中的index-of/index.html">
+<meta property="og:site_name" content="YogaXiong's Blog">
+<meta property="og:description" content="先定义一个类1234567891011121314151617class Sports &amp;#123;    let id: Int    let name: String        init(id: Int, name: String) &amp;#123;        self.id = id        self.name = name    &amp;#125;&amp;#125;let running =">
+<meta property="og:updated_time" content="2017-03-20T04:11:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift Array中的index(of:) | YogaXiong's Blog">
+<meta name="twitter:description" content="先定义一个类1234567891011121314151617class Sports &amp;#123;    let id: Int    let name: String        init(id: Int, name: String) &amp;#123;        self.id = id        self.name = name    &amp;#125;&amp;#125;let running =">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">YogaXiong&#39;s Blog</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          抽象世界
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/YogaXiong1" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">Swift Array中的index(of:)</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-03-20" class="post-meta__date date">2017-03-20</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/iOS-Tips/">iOS Tips</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>先定义一个类<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sports</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> id: <span class="type">Int</span></div><div class="line">    <span class="keyword">let</span> name: <span class="type">String</span></div><div class="line">    </div><div class="line">    <span class="keyword">init</span>(id: <span class="type">Int</span>, name: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.id = id</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> running = <span class="type">Sports</span>(id: <span class="number">0</span>, name: <span class="string">"running"</span>)</div><div class="line"><span class="keyword">let</span> swimming = <span class="type">Sports</span>(id: <span class="number">1</span>, name: <span class="string">"swimming"</span>)</div><div class="line"><span class="keyword">let</span> basketball = <span class="type">Sports</span>(id: <span class="number">2</span>, name: <span class="string">"basketball"</span>)</div><div class="line"></div><div class="line"><span class="keyword">let</span> sportsArray = [running, swimming, basketball]</div><div class="line"></div><div class="line"><span class="keyword">let</span> index = sportsArray.index(of: running)</div></pre></td></tr></table></figure></p>
+<p>这里最后一句会报错<code>error: cannot invoke &#39;index&#39; with an argument list of type &#39;(of: Sports)&#39;</code>。</p>
+<p>原因是<code>Sports</code>没有实现<code>Equatable</code>协议，无法调用<code>index(of:_)</code>。</p>
+<p>解决方法很简单，就是实现这个协议。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Sports</span>: <span class="title">Equatable</span> </span>&#123; &#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> == <span class="params">(lhs: Sports, rhs: Sports)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">    <span class="keyword">return</span> lhs.id == rhs.id &amp;&amp; lhs.name == rhs.name</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>如果是NSObject子类，由于本身遵循了<code>Equatable</code>协议，可以直接调用，但是它比较的是内存地址。如果有需求，需要重写<code>isEqual:</code>方法。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sports</span>: <span class="title">NSObject</span> </span>&#123;</div><div class="line">    <span class="keyword">let</span> id: <span class="type">Int</span></div><div class="line">    <span class="keyword">let</span> name: <span class="type">String</span></div><div class="line">    </div><div class="line">    <span class="keyword">init</span>(id: <span class="type">Int</span>, name: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.id = id</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">isEqual</span><span class="params">(<span class="number">_</span> object: Any?)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">        <span class="keyword">if</span> <span class="keyword">let</span> obj = object <span class="keyword">as</span>? <span class="type">Sports</span>, obj.id == <span class="keyword">self</span>.id &amp;&amp; obj.name == <span class="keyword">self</span>.name &#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> running = <span class="type">Sports</span>(id: <span class="number">0</span>, name: <span class="string">"running"</span>)</div><div class="line"><span class="keyword">let</span> swimming = <span class="type">Sports</span>(id: <span class="number">1</span>, name: <span class="string">"swimming"</span>)</div><div class="line"><span class="keyword">let</span> basketball = <span class="type">Sports</span>(id: <span class="number">2</span>, name: <span class="string">"basketball"</span>)</div><div class="line"></div><div class="line"><span class="keyword">let</span> sportsArray = [running, swimming, basketball]</div><div class="line"></div><div class="line"><span class="keyword">let</span> r2 = <span class="type">Sports</span>(id: <span class="number">0</span>, name: <span class="string">"running"</span>)</div><div class="line"></div><div class="line"><span class="keyword">let</span> index = sportsArray.index(of: r2)  <span class="comment">//inex = 0</span></div></pre></td></tr></table></figure></p>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2017/03/20/Swift-Array中的index-of/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"YogaXiong"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<span class="footer__copyright">©2017 YogaXiong</span>
+	<!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_site_pv"></span>次</span> -->
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
