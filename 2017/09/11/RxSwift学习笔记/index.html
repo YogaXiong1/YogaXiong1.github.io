@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      RxSwift学习笔记&lt;-&gt; | YogaXiong&#39;s Blog 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="YogaXiong">
+    
+    
+
+    <meta name="description" content="RxSwift基本概念，Observable。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RxSwift学习笔记<-> | YogaXiong's Blog">
+<meta property="og:url" content="http://yoursite.com/2017/09/11/RxSwift学习笔记/index.html">
+<meta property="og:site_name" content="YogaXiong's Blog">
+<meta property="og:description" content="RxSwift基本概念，Observable。">
+<meta property="og:updated_time" content="2017-09-11T05:47:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RxSwift学习笔记<-> | YogaXiong's Blog">
+<meta name="twitter:description" content="RxSwift基本概念，Observable。">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">YogaXiong&#39;s Blog</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          抽象世界
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/YogaXiong1" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">RxSwift学习笔记&lt;-&gt;</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-09-11" class="post-meta__date date">2017-09-11</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/RxSwift/">RxSwift</a>, <a class="tags-link" href="/tags/Swift/">Swift</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>RxSwift基本概念，Observable。<br><a id="more"></a></p>
+<p>为什么学Rx，Rx是解决什么问题的。这里就不说了，网上也有很多资料。<br>只是小小的学习笔记，记录下学习过程，体会。</p>
+<h2 id="Observable和Observer"><a href="#Observable和Observer" class="headerlink" title="Observable和Observer"></a>Observable和Observer</h2><h3 id="什么是Observable"><a href="#什么是Observable" class="headerlink" title="什么是Observable"></a>什么是Observable</h3><p><code>Observable</code>（Observable Sequence，Sequence）是Rx中基本概念之一。Rx中万物皆序列。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Observable</span>&lt;<span class="title">Element</span>&gt;: <span class="title">ObservableType</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">subscribe</span><span class="params">(observer: Observer&lt;Element&gt;)</span></span> -&gt; <span class="type">Disposable</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">ObservableType</span> : <span class="title">ObservableConvertibleType</span> </span>&#123;</div><div class="line">    <span class="comment">/// Subscribes `observer` to receive events for this sequence.</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">subscribe</span>&lt;O: ObserverType&gt;<span class="params">(<span class="number">_</span> observer: O)</span></span> -&gt; <span class="type">Disposable</span> <span class="keyword">where</span> <span class="type">O</span>.<span class="type">E</span> == <span class="type">E</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>Observable</code>（可观察对象）可以向订阅了它的<code>Observer</code>发射信号（<code>Event</code>）。<code>Event</code>则分为了三种情况。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">Event</span>&lt;<span class="title">Element</span>&gt; </span>&#123;</div><div class="line">    <span class="comment">/// Next element is produced.</span></div><div class="line">    <span class="keyword">case</span> next(<span class="type">Element</span>)</div><div class="line"></div><div class="line">    <span class="comment">/// Sequence terminated with an error.</span></div><div class="line">    <span class="keyword">case</span> error(<span class="type">Swift</span>.<span class="type">Error</span>)</div><div class="line"></div><div class="line">    <span class="comment">/// Sequence completed successfully.</span></div><div class="line">    <span class="keyword">case</span> completed</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>Observable</code>只要发射了<code>error</code>或<code>completed</code> <code>event</code>，序列就终止了。<br><code>Event</code>可以从不同线程发射，但<code>event</code>不会并发地发给<code>observer</code>。</p>
+<h3 id="创建Observable"><a href="#创建Observable" class="headerlink" title="创建Observable"></a>创建Observable</h3><p>Rx提供了多种创建<code>Observable</code>的方式。</p>
+<ul>
+<li><p><code>just</code><br>创建只包含一个element的序列。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> one = <span class="number">1</span></div><div class="line"><span class="keyword">let</span> two = <span class="number">2</span></div><div class="line"><span class="keyword">let</span> three = <span class="number">3</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> observable: <span class="type">Observable</span>&lt;<span class="type">Int</span>&gt; = <span class="type">Observable</span>&lt;<span class="type">Int</span>&gt;.just(one)</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>of</code><br>通过多个元素创建序列。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> observable: <span class="type">Observable</span>&lt;<span class="type">Int</span>&gt; = <span class="type">Observable</span>.of(one, two, three)</div><div class="line"><span class="keyword">let</span> observable: <span class="type">Observable</span>&lt;[<span class="type">Int</span>]&gt; = <span class="type">Observable</span>.of([one, two, three])</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>from</code><br>通过数组创建序列，序列中的元素不是数组本身，而是数组里的元素。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> observable: <span class="type">Observable</span>&lt;<span class="type">Int</span>&gt; = <span class="type">Observable</span>.of([one, two, three])</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>empty</code><br>创建一个空的序列，只发射一个<code>completed</code>事件。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> observable = <span class="type">Observable</span>&lt;<span class="type">Void</span>&gt;.empty()</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>never</code><br>创建一个序列，这个序列不会发射任何事件也不会终止。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> observable = <span class="type">Observable</span>&lt;<span class="type">Any</span>&gt;.never()</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>create</code><br>用闭包的方式创建一个序列。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> observable = <span class="type">Observable</span>&lt;<span class="type">Any</span>&gt;.create &#123; observer <span class="keyword">in</span></div><div class="line">    <span class="keyword">return</span> <span class="type">Disposables</span>.create()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>range</code><br>创建一个序列，从初始值开始递增到指定个数。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> observable = <span class="type">Observable</span>&lt;<span class="type">Int</span>&gt;.range(start: <span class="number">1</span>, <span class="built_in">count</span>: <span class="number">10</span>)</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>deferd</code><br>创建一个序列工厂，直到有<code>observer</code>订阅才会创建序列，并且为每个<code>observer</code>创建一个新的序列。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> observableFactory: <span class="type">Observable</span>&lt;<span class="type">Int</span>&gt;  = <span class="type">Observable</span>&lt;<span class="type">Int</span>&gt;.deferred &#123;</div><div class="line">    <span class="keyword">return</span> <span class="type">Observable</span>.just(one)</div><div class="line">&#125;</div><div class="line"></div><div class="line">observableFactory.subscribe...</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Observable的订阅和取消"><a href="#Observable的订阅和取消" class="headerlink" title="Observable的订阅和取消"></a>Observable的订阅和取消</h3><h4 id="订阅"><a href="#订阅" class="headerlink" title="订阅"></a>订阅</h4><p>Rx中每个<code>observable</code>都是不同的，<code>observable</code>如果没有被订阅，那么它不会发射任何<code>event</code>。<br>要订阅一个<code>observable</code>，可以调用以下方法。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">subscribe</span><span class="params">(<span class="number">_</span> on: @escaping <span class="params">(RxSwift.Event&lt;<span class="keyword">Self</span>.E&gt;)</span></span></span> -&gt; <span class="type">Swift</span>.<span class="type">Void</span>) -&gt; <span class="type">Disposable</span></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">subscribe</span><span class="params">(..., onNext: <span class="params">(<span class="params">(<span class="keyword">Self</span>.E)</span></span></span></span> -&gt; <span class="type">Swift</span>.<span class="type">Void</span>)? = <span class="keyword">default</span>, onError: ((<span class="type">Error</span>) -&gt; <span class="type">Swift</span>.<span class="type">Void</span>)? = <span class="keyword">default</span>, onCompleted: (() -&gt; <span class="type">Swift</span>.<span class="type">Void</span>)? = <span class="keyword">default</span>, onDisposed: (() -&gt; <span class="type">Swift</span>.<span class="type">Void</span>)? = <span class="keyword">default</span>) -&gt; <span class="type">Disposable</span></div></pre></td></tr></table></figure>
+<p>举个🌰 ：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> observable = <span class="type">Observable</span>&lt;<span class="type">Int</span>&gt;.of(<span class="number">1</span>, <span class="number">2</span>)</div><div class="line"><span class="keyword">let</span> subscription = observable.subscribe &#123; (event) <span class="keyword">in</span></div><div class="line">    <span class="built_in">print</span>(event)</div><div class="line">    <span class="built_in">print</span>(event.element)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> subscription = observable.subscribe(</div><div class="line">    onNext: &#123; element <span class="keyword">in</span></div><div class="line">        <span class="built_in">print</span>(element)</div><div class="line">    &#125;,</div><div class="line">    onError: &#123; error <span class="keyword">in</span></div><div class="line">        <span class="comment">//...</span></div><div class="line">    &#125;,</div><div class="line">    onCompleted: &#123;</div><div class="line">        <span class="comment">//...</span></div><div class="line">    &#125;,</div><div class="line">    onDisposed: &#123;</div><div class="line">        <span class="comment">//...</span></div><div class="line">    &#125;)</div></pre></td></tr></table></figure></p>
+<h4 id="取消订阅"><a href="#取消订阅" class="headerlink" title="取消订阅"></a>取消订阅</h4><p><code>observable</code>发射了<code>error</code>或<code>completed</code>就会结束。当然，也可以手动显式的取消一个<code>subscription</code>，需要对它调用<code>subscription.dispose()</code>。<br>这样来管理<code>observable</code>比较繁琐，Rx给我们提供了一个<code>DisposeBag</code>，它会替我们在合适的时候自动调用<code>dispose()</code>。<br>如果一个<code>subscription</code>用完了，没有被<code>dispose</code>。就有可能产生内存泄漏。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> disposeBag = <span class="type">DisposeBag</span>()</div><div class="line"></div><div class="line"><span class="type">Observable</span>&lt;<span class="type">Int</span>&gt;.of(<span class="number">1</span>, <span class="number">2</span>)</div><div class="line">    .subscribe&#123; event <span class="keyword">in</span></div><div class="line">        <span class="built_in">print</span>(event)</div><div class="line">    &#125;</div><div class="line">    .disposed(by: disposeBag)</div></pre></td></tr></table></figure>
+<h3 id="推荐资料"><a href="#推荐资料" class="headerlink" title="推荐资料:"></a>推荐资料:</h3><ul>
+<li><a href="http://t.swift.gg/d/2-rxswift" target="_blank" rel="external">靛青的RxSwift教程</a></li>
+<li><a href="https://store.raywenderlich.com/products/rxswift?_ga=2.10160373.1325368556.1504667041-1787846276.1504667041" target="_blank" rel="external">RxSwift: Reactive Programming with Swift</a></li>
+</ul>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2017/09/11/RxSwift学习笔记/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"YogaXiong"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<span class="footer__copyright">©2017 YogaXiong</span>
+	<!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_site_pv"></span>次</span> -->
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
