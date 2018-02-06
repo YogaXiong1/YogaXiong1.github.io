@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      算法和数据结构-LinkedList | YogaXiong&#39;s Blog 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="YogaXiong">
+    
+    
+
+    <meta name="description" content="用Swift实现了单链表(singly linked list)，实现了简单的链表操作。简单介绍了双向链表及其应用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法和数据结构-LinkedList | YogaXiong's Blog">
+<meta property="og:url" content="http://yoursite.com/2017/05/16/算法和数据结构-LinkedList/index.html">
+<meta property="og:site_name" content="YogaXiong's Blog">
+<meta property="og:description" content="用Swift实现了单链表(singly linked list)，实现了简单的链表操作。简单介绍了双向链表及其应用。">
+<meta property="og:updated_time" content="2018-02-06T10:01:17.445Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法和数据结构-LinkedList | YogaXiong's Blog">
+<meta name="twitter:description" content="用Swift实现了单链表(singly linked list)，实现了简单的链表操作。简单介绍了双向链表及其应用。">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">YogaXiong&#39;s Blog</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+        <p class="panel-cover__description">
+          抽象世界
+        </p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archive" title="" class="">归档</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+<nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+    
+      <!-- Github -->
+      <li class="navigation__item">
+        <a href="https://github.com/YogaXiong1" title="Huno on GitHub">
+          <i class='icon icon-social-github'></i>
+          <span class="label">GitHub</span>
+        </a>
+      </li>
+    
+
+    <!-- China social icon -->
+    <!--
+    
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-douban'></i>
+          <span class="label">Douban</span>
+        </a>
+      </li>
+
+      <li class="navigation__item">
+        <a href="" title="">
+          <i class='icon cs-icon-weibo'></i>
+          <span class="label">Weibo</span>
+        </a>
+      </li>
+
+    -->
+
+
+
+  </ul>
+</nav>
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">算法和数据结构-LinkedList</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2017-05-16" class="post-meta__date date">2017-05-16</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+             &#8226; 标签:
+            <font class="tags">
+              <a class="tags-link" href="/tags/Swift/">Swift</a>, <a class="tags-link" href="/tags/数据结构/">数据结构</a>
+            </font>
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>用Swift实现了单链表(<code>singly linked list</code>)，实现了简单的链表操作。简单介绍了双向链表及其应用。<br><a id="more"></a></p>
+<h4 id="单链表"><a href="#单链表" class="headerlink" title="单链表"></a>单链表</h4><p>链表的基本概念就不赘述了。这里实现的链表如图，没有定义尾节点，把第一个节点叫头节点。</p>
+<pre><code>+--------+    +--------+    +--------+    +--------+
+|        |    |        |    |        |    |        |
+| node 0 |---&gt;| node 1 |---&gt;| node 2 |---&gt;| node 3 |---&gt; nil
+|        |    |        |    |        |    |        |
++--------+    +--------+    +--------+    +--------+
+</code></pre><h5 id="定义节点"><a href="#定义节点" class="headerlink" title="定义节点"></a>定义节点</h5><p>节点包括一个值，和其指向的下个节点。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span>&lt;<span class="title">T</span>: <span class="title">CustomStringConvertible</span>&gt; </span>&#123;</div><div class="line">    <span class="keyword">var</span> value: <span class="type">T</span>?</div><div class="line">    <span class="keyword">var</span> next: <span class="type">ListNode</span>?</div><div class="line"></div><div class="line">    <span class="keyword">convenience</span> <span class="keyword">init</span>(value: <span class="type">T</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.<span class="keyword">init</span>()</div><div class="line">        <span class="keyword">self</span>.value = value</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里使用了范型<code>T</code>。同时，为了方便显示节点信息，我们实现下<code>CustomStringConvertible</code>协议。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">ListNode</span>: <span class="title">CustomStringConvertible</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">var</span> description: <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">return</span> value?.description ?? <span class="string">"nil"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="定义链表"><a href="#定义链表" class="headerlink" title="定义链表"></a>定义链表</h5><p>首先给节点<code>ListNode&lt;T&gt;</code>取了个别名<code>Node</code>，类里的<code>ListNode&lt;T&gt;</code>都可以用<code>Node</code>代替。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SinglyLinkedList</span>&lt;<span class="title">T</span>: <span class="title">CustomStringConvertible</span>&gt; </span>&#123;</div><div class="line">    <span class="keyword">typealias</span> <span class="type">Node</span> = <span class="type">ListNode</span>&lt;<span class="type">T</span>&gt;</div><div class="line">    <span class="keyword">var</span> head: <span class="type">Node</span>?</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>格式化输出为<code>[ node =&gt; node =&gt; node =&gt; nil ]</code><br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">SinglyLinkedList</span>: <span class="title">CustomStringConvertible</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">var</span> description: <span class="type">String</span> &#123;</div><div class="line">        <span class="keyword">var</span> s = <span class="string">"[ "</span></div><div class="line">        <span class="keyword">var</span> node = head</div><div class="line">        <span class="keyword">while</span> node != <span class="literal">nil</span> &#123;</div><div class="line">            s += <span class="string">"<span class="subst">\(String(describing: node!.value!)</span>) =&gt;"</span></div><div class="line">            node = node!.next</div><div class="line">            <span class="keyword">if</span> node != <span class="literal">nil</span> &#123; s += <span class="string">" "</span>&#125; <span class="keyword">else</span> &#123; s += <span class="string">" nil "</span> &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> s + <span class="string">"]"</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="链表的节点个数"><a href="#链表的节点个数" class="headerlink" title="链表的节点个数"></a>链表的节点个数</h5><p>从头节点开始遍历计算。复杂度为<em>O(n)</em>。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> <span class="built_in">count</span>: <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> head = head <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> <span class="built_in">count</span> = <span class="number">1</span></div><div class="line">    <span class="keyword">var</span> node = head.next</div><div class="line">    <span class="keyword">while</span> node != <span class="literal">nil</span> &#123;</div><div class="line">        node = node!.next</div><div class="line">        <span class="built_in">count</span> += <span class="number">1</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">count</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="最后一个节点"><a href="#最后一个节点" class="headerlink" title="最后一个节点"></a>最后一个节点</h5><p>同样也是遍历到最后一个节点。复杂度为<em>O(n)</em>。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> last: <span class="type">Node</span>? &#123;</div><div class="line">    <span class="keyword">var</span> node = head</div><div class="line">    <span class="keyword">if</span> node == <span class="literal">nil</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span> node != <span class="literal">nil</span> &amp;&amp; node!.next != <span class="literal">nil</span> &#123;</div><div class="line">        node = node!.next!</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> node</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="按照下标获取节点"><a href="#按照下标获取节点" class="headerlink" title="按照下标获取节点"></a>按照下标获取节点</h5><p>定义一个游标<code>cursor = index</code>，每次循环自减1，直到 <code>cursor = 0</code>。这里要注意边界情况。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">element</span><span class="params">(at index: Int)</span></span> -&gt; <span class="type">Node</span>? &#123;</div><div class="line">    <span class="built_in">assert</span>(index &gt;= <span class="number">0</span>)</div><div class="line">    <span class="built_in">assert</span>(head != <span class="literal">nil</span>)</div><div class="line">    <span class="keyword">var</span> cursor = index</div><div class="line">    </div><div class="line">    <span class="keyword">var</span> node = head</div><div class="line">    <span class="keyword">while</span> node != <span class="literal">nil</span> &#123;</div><div class="line">        <span class="keyword">if</span> cursor &lt; <span class="number">0</span> &#123;</div><div class="line">            <span class="built_in">fatalError</span>(<span class="string">"out of range"</span>)</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> cursor == <span class="number">0</span> &#123;</div><div class="line">            <span class="keyword">return</span> node</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            cursor -= <span class="number">1</span></div><div class="line">            node = node!.next</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> node</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="增加一个节点"><a href="#增加一个节点" class="headerlink" title="增加一个节点"></a>增加一个节点</h5><ul>
+<li>找最后一个节点，复杂度是<em>O(n)</em>。</li>
+<li>让最后一个节点的<code>next</code>指向增加的<code>node</code>，即<code>lastNode.next = node</code>，复杂度是<em>O(1)</em>。</li>
+<li>总的复杂度为<em>O(n)</em>。</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">append</span><span class="params">(<span class="number">_</span> node: Node)</span></span> &#123;</div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> lastNode = last &#123;</div><div class="line">        lastNode.next = node</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        head = node</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="按照下标插入一个节点"><a href="#按照下标插入一个节点" class="headerlink" title="按照下标插入一个节点"></a>按照下标插入一个节点</h5><ul>
+<li>找到下标节点的前一个节点。最好的情况是在头部，复杂度为<em>O(1)</em>，最坏的情况在尾部，复杂度为<em>O(n)</em>。</li>
+<li>让最后一个节点的<code>next</code>指向增加的<code>node</code>，即<code>lastNode.next = node</code>，复杂度是<em>O(1)</em>。</li>
+<li>总的复杂度为<em>O(n)</em>。<blockquote>
+<p>插入的数据与顺序不大的话，尽量在头部插入，这样更快。</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">insert</span><span class="params">(<span class="number">_</span> node: Node, at index: Int)</span></span> &#123;</div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> <span class="number">_</span> = head &#123;</div><div class="line">        <span class="keyword">let</span> target = element(at: index - <span class="number">1</span>)</div><div class="line">        node.next = target?.next</div><div class="line">        target?.next = node</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        head = node</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="按照下标删除一个节点"><a href="#按照下标删除一个节点" class="headerlink" title="按照下标删除一个节点"></a>按照下标删除一个节点</h5><ul>
+<li>找到下标节点和它的前一个节点。</li>
+<li>让前一个节点的next指向下标节点的next，下标节点的next设为nil。</li>
+<li>总的复杂度为<em>O(n)</em>。</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">remove</span><span class="params">(at index: Int)</span></span> &#123;</div><div class="line">    <span class="built_in">assert</span>(index &gt;= <span class="number">0</span>)</div><div class="line">    <span class="keyword">if</span> index == <span class="number">0</span> &#123;</div><div class="line">        head = head?.next</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">let</span> preNode = element(at: index - <span class="number">1</span>)</div><div class="line">        <span class="keyword">let</span> target = preNode?.next</div><div class="line">        preNode?.next = target?.next</div><div class="line">        target?.next = <span class="literal">nil</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="清空整个链表"><a href="#清空整个链表" class="headerlink" title="清空整个链表"></a>清空整个链表</h5><p>直接让<code>head = nil</code>。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">removeAll</span><span class="params">()</span></span> &#123;</div><div class="line">    head = <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="翻转链表-–-非递归"><a href="#翻转链表-–-非递归" class="headerlink" title="翻转链表 – 非递归"></a>翻转链表 – 非递归</h5><p>核心思想是，从第一个节点开始，不断把下一个节点拿到第一位。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">--&gt; (0) --&gt; (1) --&gt; (2) --&gt; nil</div><div class="line">--&gt; (1) --&gt; (0) --&gt; (2) --&gt; nil</div><div class="line">--&gt; (2) --&gt; (0) --&gt; (1) --&gt; nil</div></pre></td></tr></table></figure></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">reverse</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="built_in">assert</span>(head != <span class="literal">nil</span> &amp;&amp; head?.next != <span class="literal">nil</span>)</div><div class="line">    </div><div class="line">    <span class="keyword">var</span> cur: <span class="type">Node</span>?</div><div class="line">    <span class="keyword">var</span> next: <span class="type">Node</span>?</div><div class="line">    <span class="keyword">var</span> tmp: <span class="type">Node</span>?</div><div class="line">    </div><div class="line">    cur = head</div><div class="line">    next = head?.next</div><div class="line">    </div><div class="line">    <span class="keyword">while</span> next != <span class="literal">nil</span> &#123;</div><div class="line">        cur?.next = next?.next</div><div class="line">        tmp = next?.next</div><div class="line">        next?.next = head</div><div class="line">        </div><div class="line">        head = next</div><div class="line">        next = tmp</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="翻转链表-–-递归"><a href="#翻转链表-–-递归" class="headerlink" title="翻转链表 – 递归"></a>翻转链表 – 递归</h5><p>从头节点开始，改变前个节点和下个节点指向。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">--&gt; (0) --&gt; (1) --&gt; (2) --&gt; nil</div><div class="line">nil &lt;-- (0)  (1) --&gt; (2)--&gt; nil</div><div class="line">nil &lt;-- (0) &lt;--(1)  (2)--&gt; nil</div><div class="line">nil &lt;-- (0) &lt;--(1) &lt;-- (2)</div></pre></td></tr></table></figure></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">recursionReverse</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="keyword">guard</span> <span class="keyword">let</span> head = head, <span class="keyword">let</span> <span class="number">_</span> = head.next <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">let</span> nextNode = head.next</div><div class="line">    head.next = <span class="literal">nil</span></div><div class="line">    <span class="keyword">self</span>.head = nextNode</div><div class="line">    recursionReverse()</div><div class="line">    nextNode?.next = head</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>举个栗子🌰<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typealias</span> <span class="type">IntNode</span> = <span class="type">ListNode</span>&lt;<span class="type">Int</span>&gt;</div><div class="line"></div><div class="line"><span class="keyword">let</span> list = <span class="type">SinglyLinkedList</span>&lt;<span class="type">Int</span>&gt;()</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>...<span class="number">5</span> &#123;</div><div class="line">    <span class="keyword">let</span> node = <span class="type">IntNode</span>(value: i)</div><div class="line">    list.append(node)</div><div class="line">&#125;</div><div class="line"></div><div class="line">list    <span class="comment">//[ 0 =&gt; 1 =&gt; 2 =&gt; 3 =&gt; 4 =&gt; 5 =&gt; nil ]</span></div><div class="line"></div><div class="line">list.<span class="built_in">count</span>    <span class="comment">//6</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> f = list.head    <span class="comment">//0</span></div><div class="line"></div><div class="line">list.element(at: <span class="number">1</span>)    <span class="comment">//1</span></div><div class="line"></div><div class="line">list.insert(<span class="type">IntNode</span>(value: <span class="number">55</span>), at: <span class="number">2</span>)    <span class="comment">//[ 0 =&gt; 1 =&gt; 55 =&gt; 2 =&gt; 3 =&gt; 4 =&gt; 5 =&gt; nil ]</span></div><div class="line"></div><div class="line">list.remove(at: <span class="number">0</span>)    <span class="comment">//[ 1 =&gt; 55 =&gt; 2 =&gt; 3 =&gt; 4 =&gt; 5 =&gt; nil ]</span></div><div class="line"></div><div class="line">list.remove(at: <span class="number">1</span>)    <span class="comment">//[ 1 =&gt; 2 =&gt; 3 =&gt; 4 =&gt; 5 =&gt; nil ]</span></div><div class="line"></div><div class="line">list.<span class="built_in">reverse</span>()    <span class="comment">//[ 5 =&gt; 4 =&gt; 3 =&gt; 2 =&gt; 1 =&gt; nil ]</span></div><div class="line"></div><div class="line">list.recursionReverse()    <span class="comment">//[ 1 =&gt; 2 =&gt; 3 =&gt; 4 =&gt; 5 =&gt; nil ]</span></div></pre></td></tr></table></figure></p>
+<h4 id="双向链表及其应用"><a href="#双向链表及其应用" class="headerlink" title="双向链表及其应用"></a>双向链表及其应用</h4><p>一般双链表结构。</p>
+<pre><code>         +--------+    +--------+    +--------+    +--------+
+head ---&gt;|        |---&gt;|        |---&gt;|        |---&gt;|        |---&gt; nil
+         | node 0 |    | node 1 |    | node 2 |    | node 3 |
+ nil &lt;---|        |&lt;---|        |&lt;---|        |&lt;---|        |&lt;--- tail
+         +--------+    +--------+    +--------+    +--------+
+</code></pre><p>节点可以这样定义。<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">    <span class="keyword">var</span> value: <span class="type">T</span>？</div><div class="line">    <span class="keyword">var</span> next: <span class="type">Node</span>?</div><div class="line">    <span class="keyword">weak</span> <span class="keyword">var</span> previous: <span class="type">Node</span>?</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><code>next</code>和<code>previous</code>不能同时为strong，会导致循环引用。</p>
+</blockquote>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2017/05/16/算法和数据结构-LinkedList/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"YogaXiong"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<span class="footer__copyright">©2017 YogaXiong</span>
+	<!-- <span id="busuanzi_container_site_pv"><span id="busuanzi_value_site_pv"></span>次</span> -->
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
